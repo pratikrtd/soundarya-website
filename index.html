@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soundarya Beauty Academy & Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:'Lato',sans-serif;background:#fdf6f9;color:#333;}
+header{background:white;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 3px 10px rgba(0,0,0,0.08);}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Montserrat';font-weight:700;color:#d81b60;}
+.logo img{height:45px;}
+.nav{display:flex;gap:25px;font-weight:600;}
+.nav div{cursor:pointer;}
+.nav div:hover{color:#d81b60;}
+.marquee{background:#000;color:#00ff00;padding:6px;overflow:hidden;white-space:nowrap;}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 15s linear infinite;}
+@keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+.hero{height:450px;background:url('https://i.ibb.co/zh6xF8k5/unnamed.jpg') center/cover no-repeat;}
+.section{padding:40px;display:none;}
+.active{display:block;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:25px;}
+.card{background:white;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);overflow:hidden;cursor:pointer;}
+.card img{width:100%;height:220px;object-fit:cover;}
+.card-content{padding:15px;}
+.old{text-decoration:line-through;color:gray;}
+button{padding:8px 14px;border:none;background:#d81b60;color:white;border-radius:6px;cursor:pointer;margin-top:8px;}
+button:hover{background:#ad1457;}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;}
+.modal-box{background:white;padding:25px;width:90%;max-width:600px;border-radius:12px;}
+
+.admin-panel{
+position:fixed;
+top:0;
+right:0;
+width:420px;
+height:100vh;
+background:white;
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+padding:20px;
+overflow:auto;
+display:none;
+}
+
+.admin-section{margin-top:20px;border:1px solid #eee;padding:15px;border-radius:10px;}
+.admin-section h4{cursor:pointer;margin:0;}
+
+.help-box{background:white;padding:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);line-height:2;}
+.help-box a{color:#d81b60;text-decoration:none;font-weight:600;display:block;}
+
+footer{background:#111;color:white;padding:40px;text-align:center;}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<img src="https://i.ibb.co/DfktBZSF/Screenshot-2026-02-28-21-41-36-48-99c04817c0de5652397fc8b56c3b3817.jpg">
+Soundarya Beauty Academy & Store
+</div>
+<div class="nav">
+<div onclick="showSection('home')">Home</div>
+<div onclick="showSection('academy')">Academy</div>
+<div onclick="showSection('help')">Help</div>
+<div onclick="adminLogin()">⚙ Admin</div>
+</div>
+</header>
+
+<div class="marquee">
+<span>
+हमारे यहां पार्लर सिखाया जाता है संपर्क - 9926840998 , 9329445940 |
+पता - बाजार चौक बरुड जिला खरगोन
+</span>
+</div>
+
+<div class="hero"></div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+<h2>Our Products</h2>
+<div id="productsContainer" class="grid"></div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal">
+<div class="modal-box">
+<div id="productDetail"></div>
+<button onclick="closeProduct()">Close</button>
+</div>
+</div>
+
+<!-- ACADEMY -->
+<div id="academy" class="section">
+<h2>Student Login</h2>
+<input id="studentID" placeholder="Student ID">
+<input id="studentPass" type="password" placeholder="Password">
+<button onclick="studentLogin()">Login</button>
+<div id="studentData"></div>
+</div>
+
+<!-- HELP -->
+<div id="help" class="section">
+<div class="help-box">
+📞 <a href="tel:9926840998">Call - 9926840998</a>
+💬 <a href="https://wa.me/919329445940">WhatsApp - 9329445940</a>
+🏢 <a href="tel:9893268430">Office - 9893268430</a>
+📧 <a href="mailto:soundarystore@gmail.com">soundarystore@gmail.com</a>
+▶ <a href="https://www.youtube.com/@soundarystorebarud">YouTube</a>
+📸 <a href="https://www.instagram.com/soundary_store">Instagram</a>
+👥 <a href="https://whatsapp.com/channel/0029Vb6nWXTFXUuiuiP3nD0i">WhatsApp Group</a>
+</div>
+</div>
+
+<footer>© 2026 Soundarya Beauty Academy & Store</footer>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="admin-panel">
+<h3 style="color:#d81b60;">Admin Dashboard</h3>
+
+<div class="admin-section">
+<h4 onclick="toggleSection('productAdmin')">Products Management</h4>
+<div id="productAdmin" style="display:none;">
+<input id="pTitle" placeholder="Product Title">
+<input id="pPrice" placeholder="Price">
+<input id="pMRP" placeholder="MRP">
+<textarea id="pDesc" placeholder="Description"></textarea>
+<input id="pImg1" placeholder="Image Link 1">
+<input id="pImg2" placeholder="Image Link 2">
+<input id="pImg3" placeholder="Image Link 3">
+<input id="pImg4" placeholder="Image Link 4">
+<input id="pImg5" placeholder="Image Link 5">
+<button onclick="saveProduct()">Save Product</button>
+<button onclick="editProductByID()">Edit Product</button>
+<button onclick="editStudentByID()">Edit Student</button>
+<button onclick="deleteProduct()">Delete Product</button>
+</div>
+</div>
+
+<div class="admin-section">
+<h4 onclick="toggleSection('studentAdmin')">Students Management</h4>
+<div id="studentAdmin" style="display:none;">
+<input id="sID" placeholder="Student ID">
+<input id="sName" placeholder="Name">
+<input id="sMobile" placeholder="Mobile">
+<input id="sCourse" placeholder="Course">
+<input id="sTotal" placeholder="Total Fees">
+<input id="sPaid" placeholder="Fees Paid">
+<input id="sCert" placeholder="Certificate Link">
+<input id="sNotes" placeholder="Notes Link">
+<input id="sYT" placeholder="YouTube Course Link">
+<input id="sPass" placeholder="Password">
+<button onclick="saveStudent()">Save Student</button>
+<button onclick="deleteStudent()">Delete Student</button>
+</div>
+</div>
+
+<button onclick="hideAdmin()">Close</button>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, addDoc, deleteDoc }
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig={
+apiKey:"AIzaSyAqLAI7c-yqMeAyNZFh75KU5NKA5sSh800",
+authDomain:"store-12869.firebaseapp.com",
+projectId:"store-12869"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+
+window.showSection=(id)=>{
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+};
+
+window.toggleSection=(id)=>{
+const el=document.getElementById(id);
+el.style.display=el.style.display==="none"?"block":"none";
+};
+
+window.adminLogin=()=>{
+const pass=prompt("Enter Admin Password");
+if(pass==="8430"){adminPanel.style.display="block";}
+else alert("Wrong Password");
+};
+
+window.hideAdmin=()=>adminPanel.style.display="none";
+
+async function loadProducts(){
+const snap=await getDocs(collection(db,"products"));
+productsContainer.innerHTML="";
+snap.forEach(docSnap=>{
+const d=docSnap.data();
+productsContainer.innerHTML+=`
+<div class="card" onclick="openProduct('${docSnap.id}')">
+<img src="${d.images?d.images[0]:''}">
+<div class="card-content">
+<h3>${d.title}</h3>
+<span class="old">₹${d.mrp}</span>
+<b> ₹${d.price}</b>
+</div>
+</div>`;
+});
+}
+loadProducts();
+
+window.openProduct = async(id)=>{
+  const snap = await getDoc(doc(db,"products",id));
+  const d = snap.data();
+
+  // Main product UI
+  productDetail.innerHTML = `
+    <h2>${d.title}</h2>
+    <p>${d.description}</p>
+    <p><span class="old">₹${d.mrp}</span> ₹${d.price}</p>
+    <button onclick="alert('Aabhi Online Order Nahi Lete')">Order Now</button>
+    <hr>
+    <h3>Related Products</h3>
+    <div id="relatedProducts" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;"></div>
+  `;
+
+  // Related products load
+  const all = await getDocs(collection(db,"products"));
+  const relatedDiv = document.getElementById("relatedProducts");
+
+  all.forEach(p=>{
+    if(p.id !== id){
+      const r = p.data();
+      relatedDiv.innerHTML += `
+        <div style="cursor:pointer;border:1px solid #eee;padding:10px;border-radius:8px;"
+             onclick="openProduct('${p.id}')">
+          <img src="${r.images ? r.images[0] : ''}" style="width:100%;height:100px;object-fit:cover;">
+          <p style="font-size:14px;margin:5px 0;">${r.title}</p>
+        </div>
+      `;
+    }
+  });
+
+  productModal.style.display="flex";
+};
+
+window.closeProduct=()=>productModal.style.display="none";
+
+window.saveProduct=async()=>{
+await addDoc(collection(db,"products"),{
+title:pTitle.value,
+price:pPrice.value,
+mrp:pMRP.value,
+description:pDesc.value,
+images:[pImg1.value,pImg2.value,pImg3.value,pImg4.value,pImg5.value]
+});
+alert("Product Saved");
+loadProducts();
+};
+
+window.deleteProduct=async()=>{
+const id=prompt("Enter Product Document ID");
+await deleteDoc(doc(db,"products",id));
+alert("Deleted");
+loadProducts();
+};
+
+window.saveStudent=async()=>{
+await setDoc(doc(db,"students",sID.value),{
+name:sName.value,
+mobile:sMobile.value,
+course:sCourse.value,
+totalFees:sTotal.value,
+feesPaid:sPaid.value,
+certificateLink:sCert.value,
+notesLink:sNotes.value,
+youtubeCourse:sYT.value,
+password:sPass.value
+});
+alert("Student Saved");
+};
+
+window.deleteStudent=async()=>{
+await deleteDoc(doc(db,"students",sID.value));
+alert("Deleted");
+};
+
+window.studentLogin=async()=>{
+const snap=await getDoc(doc(db,"students",studentID.value));
+if(!snap.exists()) return alert("Not Found");
+const d=snap.data();
+if(d.password!==studentPass.value) return alert("Wrong Password");
+studentData.innerHTML=`
+<h3>${d.name}</h3>
+<p>Mobile: ${d.mobile}</p>
+<p>Course: ${d.course}</p>
+<p>Total Fees: ${d.totalFees}</p>
+<p>Fees Paid: ${d.feesPaid}</p>
+<p><a href="${d.certificateLink}" target="_blank">Certificate</a></p>
+<p><a href="${d.notesLink}" target="_blank">Notes</a></p>
+<p><a href="${d.youtubeCourse}" target="_blank">Online Course</a></p>
+`;
+};
+</script>
+
+</body>
+</html>
