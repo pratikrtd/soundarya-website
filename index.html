@@ -1,289 +1,1051 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soundarya Beauty Academy & Store</title>
+<title>Soundarya Beauty Academy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Lato',sans-serif;
-  background:#fff5f8;
+
+:root{
+    --plum:#4a1338;
+    --plum-dark:#33091f;
+    --rose:#d98aa6;
+    --blush:#fbe9ee;
+    --gold:#c9a227;
+    --gold-light:#e6c866;
+    --cream:#fffaf6;
+    --ink:#2c1e28;
+    --muted:#8a7580;
+    --line:#f0e0e6;
+    --ok:#3f8f5f;
+    --warn:#b9781f;
+    --danger:#b23a48;
 }
 
-header{
-  background:white;
-  padding:12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', Arial, sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    background-image:
+        radial-gradient(circle at 15% 10%, rgba(217,138,166,0.12), transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(201,162,39,0.10), transparent 40%);
+    background-attachment:fixed;
+}
+
+h1,h2,h3,.logo{
+    font-family:'Playfair Display', serif;
+}
+
+/* ---------- Monogram signature element ---------- */
+.monogram{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:linear-gradient(145deg,var(--plum),var(--plum-dark));
+    color:var(--gold-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:1px;
+    margin:0 auto 18px;
+    box-shadow:0 8px 20px rgba(74,19,56,0.25);
+    border:2px solid var(--gold);
+}
+
+.monogram.small{
+    width:44px;
+    height:44px;
+    font-size:15px;
+    margin:0;
+}
+
+/* ---------- LOGIN ---------- */
+
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+}
+
+.login-box{
+    width:100%;
+    max-width:400px;
+    background:#fff;
+    padding:42px 36px 36px;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(74,19,56,0.12), 0 2px 8px rgba(0,0,0,0.04);
+    border:1px solid var(--line);
 }
 
 .logo{
-  font-family:'Montserrat';
-  font-weight:700;
-  color:#d81b60;
-  font-size:14px;
+    text-align:center;
+    font-size:24px;
+    font-weight:700;
+    color:var(--plum);
+    letter-spacing:0.5px;
 }
 
-.nav{
-  font-size:12px;
-  display:flex;
-  gap:10px;
+.logo span{
+    display:block;
+    font-family:'Poppins', sans-serif;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:8px;
+    font-weight:400;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
 }
 
-.nav div{
-  cursor:pointer;
+.subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin:14px 0 30px;
+    font-size:14px;
 }
 
-.section{
-  padding:15px;
-  display:none;
+label.field-label{
+    display:block;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:6px;
+    font-weight:500;
+    letter-spacing:0.3px;
 }
 
-.active{
-  display:block;
+input{
+    width:100%;
+    padding:13px 15px;
+    margin-bottom:18px;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    font-family:'Poppins', sans-serif;
+    background:#fdfbfa;
+    transition:border-color .2s ease, box-shadow .2s ease;
 }
 
-.card{
-  background:white;
-  border-radius:10px;
-  padding:10px;
-  margin-bottom:15px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.08);
-}
-
-.card img{
-  width:100%;
-  border-radius:8px;
+input:focus{
+    border-color:var(--rose);
+    box-shadow:0 0 0 3px rgba(217,138,166,0.18);
 }
 
 button{
-  width:100%;
-  padding:8px;
-  margin-top:8px;
-  background:#d81b60;
-  color:white;
-  border:none;
-  border-radius:6px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(120deg,var(--plum),var(--plum-dark));
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    letter-spacing:0.4px;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    box-shadow:0 10px 24px rgba(74,19,56,0.25);
 }
 
-input, textarea{
-  width:100%;
-  padding:8px;
-  margin-bottom:8px;
-  box-sizing:border-box;
+button:hover{
+    transform:translateY(-2px);
+    opacity:0.95;
 }
 
-.admin-panel{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:90%;
-  background:white;
-  border-top-left-radius:20px;
-  border-top-right-radius:20px;
-  box-shadow:0 -5px 20px rgba(0,0,0,0.2);
-  display:none;
-  overflow:auto;
-  padding:15px;
+button:active{
+    transform:translateY(0);
 }
 
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  justify-content:center;
-  align-items:center;
+.login-hint{
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:20px;
 }
 
-.modal-box{
-  background:white;
-  width:95%;
-  padding:15px;
-  border-radius:10px;
+.demo-note{
+    text-align:center;
+    font-size:11px;
+    color:var(--muted);
+    margin-top:10px;
+    background:var(--blush);
+    padding:8px 10px;
+    border-radius:8px;
 }
+
+/* ---------- DASHBOARD ---------- */
+
+#dashboard{
+    display:none;
+}
+
+header{
+    padding:18px 30px;
+    background:linear-gradient(120deg,var(--plum),var(--plum-dark));
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    position:sticky;
+    top:0;
+    z-index:10;
+    box-shadow:0 4px 20px rgba(0,0,0,0.12);
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+header h1{
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:0.3px;
+}
+
+header small{
+    color:rgba(255,255,255,0.65);
+    font-size:11.5px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+#studentName{
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:9px 18px;
+    border-radius:30px;
+    font-size:13.5px;
+    font-weight:500;
+}
+
+.logout-btn{
+    width:auto;
+    padding:9px 18px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:none;
+    font-size:13px;
+    font-weight:500;
+}
+
+.logout-btn:hover{
+    background:rgba(255,255,255,0.16);
+    transform:none;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:36px 24px 20px;
+}
+
+.welcome{
+    margin-bottom:26px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.welcome h2{
+    font-size:26px;
+    font-weight:700;
+    color:var(--plum);
+}
+
+.welcome h2 span{
+    color:var(--gold);
+}
+
+.welcome p{
+    color:var(--muted);
+    font-size:13.5px;
+    margin-top:6px;
+}
+
+.today-pill{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:10px 16px;
+    border-radius:12px;
+    font-size:12.5px;
+    color:var(--muted);
+}
+
+.today-pill b{
+    color:var(--plum);
+    display:block;
+    font-size:13.5px;
+}
+
+/* ---------- Notices strip ---------- */
+.notice-strip{
+    background:linear-gradient(120deg,var(--blush),#fff);
+    border:1px solid var(--line);
+    border-left:4px solid var(--gold);
+    border-radius:12px;
+    padding:14px 18px;
+    margin-bottom:26px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    overflow:hidden;
+}
+
+.notice-strip .bell{
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.notice-strip .notice-text{
+    font-size:13px;
+    color:var(--plum-dark);
+    font-weight:500;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:26px 24px;
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(74,19,56,0.05);
+    transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(74,19,56,0.10);
+}
+
+.card.wide{
+    grid-column:span 2;
+}
+
+@media (max-width:700px){
+    .card.wide{grid-column:span 1;}
+}
+
+.card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:16px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+}
+
+.card-head-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.card-icon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:var(--blush);
+    color:var(--plum);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    flex-shrink:0;
+}
+
+.card h3{
+    font-size:16.5px;
+    font-weight:700;
+    color:var(--plum);
+}
+
+.card p{
+    margin:10px 0;
+    color:#5a4b53;
+    line-height:1.6;
+    font-size:14px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.card p b{
+    color:var(--ink);
+    font-weight:500;
+}
+
+.card p span{
+    text-align:right;
+    font-weight:600;
+    color:var(--plum-dark);
+}
+
+.status{
+    color:var(--ok);
+    font-weight:600;
+    background:rgba(63,143,95,0.1);
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:12.5px;
+}
+
+.pill{
+    font-size:11.5px;
+    font-weight:600;
+    padding:4px 12px;
+    border-radius:20px;
+}
+
+.pill.good{ color:var(--ok); background:rgba(63,143,95,0.1); }
+.pill.warn{ color:var(--warn); background:rgba(185,120,31,0.12); }
+
+.download-btn{
+    margin-top:16px;
+    background:linear-gradient(120deg,var(--gold),#b8901f);
+    box-shadow:0 10px 20px rgba(201,162,39,0.25);
+}
+
+.contact-line{
+    display:block;
+    text-align:left;
+}
+
+.contact-line b{
+    color:var(--plum-dark);
+}
+
+/* ---------- Attendance ---------- */
+.attendance-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+}
+
+.attendance-percent{
+    font-size:28px;
+    font-weight:700;
+    color:var(--plum);
+    font-family:'Playfair Display', serif;
+}
+
+.progress-track{
+    width:100%;
+    height:10px;
+    background:var(--blush);
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:14px;
+}
+
+.progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--gold),var(--rose));
+    border-radius:20px;
+}
+
+.attendance-note{
+    font-size:12.5px;
+    color:var(--muted);
+}
+
+/* ---------- Curriculum / modules ---------- */
+.module-list{
+    list-style:none;
+}
+
+.module-list li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:13.5px;
+    color:#5a4b53;
+}
+
+.module-list li:last-child{
+    border-bottom:none;
+}
+
+.module-check{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
+}
+
+.module-check.done{
+    background:var(--ok);
+    color:#fff;
+}
+
+.module-check.pending{
+    background:var(--blush);
+    color:var(--rose);
+    border:1.5px solid var(--rose);
+}
+
+.module-list li.done-text{
+    color:var(--ink);
+    font-weight:500;
+}
+
+/* ---------- Payment history ---------- */
+.payment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:6px;
+    font-size:13px;
+}
+
+.payment-table th{
+    text-align:left;
+    color:var(--muted);
+    font-weight:500;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+    padding:6px 6px;
+    border-bottom:1px solid var(--line);
+}
+
+.payment-table td{
+    padding:9px 6px;
+    border-bottom:1px solid var(--line);
+    color:#5a4b53;
+}
+
+.payment-table tr:last-child td{
+    border-bottom:none;
+}
+
+/* ---------- Notices card ---------- */
+.notice-list{
+    list-style:none;
+}
+
+.notice-list li{
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.notice-list li:last-child{
+    border-bottom:none;
+}
+
+.notice-date{
+    font-size:11px;
+    color:var(--gold);
+    font-weight:600;
+    letter-spacing:0.3px;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:4px;
+}
+
+.notice-item-text{
+    font-size:13.5px;
+    color:#5a4b53;
+    line-height:1.5;
+}
+
+/* ---------- Schedule ---------- */
+.schedule-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:13.5px;
+}
+
+.schedule-row:last-child{
+    border-bottom:none;
+}
+
+.schedule-day{
+    color:var(--muted);
+    font-weight:500;
+}
+
+.schedule-time{
+    color:var(--plum-dark);
+    font-weight:600;
+}
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+    margin-top:36px;
+    font-size:12.5px;
+    letter-spacing:0.3px;
+}
+
+@media (max-width:480px){
+    .login-box{padding:32px 24px;}
+    header{padding:16px 18px;}
+    .container{padding:26px 16px;}
+}
+
 </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">Soundarya Beauty Academy</div>
-<div class="nav">
-<div onclick="showSection('home')">Home</div>
-<div onclick="showSection('academy')">Academy</div>
-<div onclick="adminLogin()">Admin</div>
+<!-- LOGIN -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="monogram">SBA</div>
+
+        <div class="logo">
+            SOUNDARYA BEAUTY ACADEMY
+            <span>By Svapra.com</span>
+        </div>
+
+        <div class="subtitle">
+            Student Login Portal
+        </div>
+
+        <label class="field-label" for="studentId">Student ID</label>
+        <input type="text" id="studentId" placeholder="e.g. SBP1001">
+
+        <label class="field-label" for="mobile">Mobile Number</label>
+        <input type="password" id="mobile" placeholder="Registered mobile number">
+
+        <button onclick="login()">LOGIN</button>
+
+        <div class="login-hint">Use the mobile number registered at admission as your password</div>
+
+    </div>
+
 </div>
+
+<!-- DASHBOARD -->
+
+<div id="dashboard">
+
+<header>
+
+<div class="header-left">
+    <div class="monogram small">SBA</div>
+    <div>
+        <h1>SOUNDARYA BEAUTY ACADEMY</h1>
+        <small>By Svapra.com</small>
+    </div>
+</div>
+
+<div class="header-right">
+    <div id="studentName"></div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
 </header>
 
-<!-- HOME -->
-<div id="home" class="section active">
-<h3>Our Products</h3>
-<div id="productsContainer"></div>
+<div class="container">
+
+<div class="welcome">
+    <div>
+        <h2>Welcome, <span id="welcomeName"></span></h2>
+        <p>Here's an overview of your enrollment, attendance, fees and certificate status.</p>
+    </div>
+    <div class="today-pill">
+        <b id="todayDate"></b>
+        Today
+    </div>
 </div>
 
-<!-- PRODUCT MODAL -->
-<div id="productModal" class="modal">
-<div class="modal-box">
-<div id="productDetail"></div>
-<button onclick="closeProduct()">Close</button>
-</div>
+<div class="notice-strip">
+    <span class="bell">&#128276;</span>
+    <span class="notice-text" id="topNotice"></span>
 </div>
 
-<!-- ACADEMY -->
-<div id="academy" class="section">
-<h3>Student Login</h3>
-<input id="studentID" placeholder="Student ID">
-<input id="studentPass" type="password" placeholder="Password">
-<button onclick="studentLogin()">Login</button>
-<div id="studentData"></div>
+<div class="grid">
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#128100;</div>
+                <h3>Profile Details</h3>
+            </div>
+        </div>
+
+        <p><b>Name</b> <span id="name"></span></p>
+        <p><b>Student ID</b> <span id="sid"></span></p>
+        <p><b>Mobile</b> <span id="phone"></span></p>
+        <p><b>Start Date</b> <span id="startDate"></span></p>
+        <p><b>Address</b> <span id="address"></span></p>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#127891;</div>
+                <h3>Course Details</h3>
+            </div>
+        </div>
+
+        <p><b>Course Name</b> <span id="course"></span></p>
+        <p><b>Trainer</b> <span>Vandana Rathod Mam</span></p>
+        <p><b>Batch Timing</b> <span id="batchTiming"></span></p>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#128197;</div>
+                <h3>Weekly Schedule</h3>
+            </div>
+        </div>
+
+        <div class="schedule-row"><span class="schedule-day">Monday - Sunday</span><span class="schedule-time" id="schedWeekday"></span></div>
+        <div class="attendance-note">Classes run all 7 days of the week</div>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#128202;</div>
+                <h3>Attendance</h3>
+            </div>
+            <span class="pill good" id="attendancePill"></span>
+        </div>
+
+        <div class="attendance-top">
+            <span class="attendance-percent"><span id="attendancePercent"></span>%</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="attendanceBar"></div>
+        </div>
+        <div class="attendance-note">Based on classes attended till date</div>
+    </div>
+
+    <div class="card wide">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#10003;</div>
+                <h3>Course Curriculum Progress</h3>
+            </div>
+        </div>
+
+        <ul class="module-list" id="moduleList"></ul>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#8377;</div>
+                <h3>Fees Management</h3>
+            </div>
+        </div>
+
+        <p><b>Total Fees</b> <span>&#8377;<span id="totalFees"></span></span></p>
+        <p><b>1st Installment</b> <span id="firstInstallment"></span></p>
+        <p><b>2nd Installment</b> <span id="secondInstallment"></span></p>
+        <p><b>3rd Installment</b> <span id="thirdInstallment"></span></p>
+        <p><b>Next Installment</b> <span id="nextInstallment"></span></p>
+        <p><b>Remaining Balance</b> <span>&#8377;<span id="remaining"></span></span></p>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#128179;</div>
+                <h3>Payment History</h3>
+            </div>
+        </div>
+
+        <table class="payment-table">
+            <thead>
+                <tr><th>Date</th><th>Amount</th><th>Mode</th></tr>
+            </thead>
+            <tbody id="paymentHistoryBody"></tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#127942;</div>
+                <h3>Certificate</h3>
+            </div>
+        </div>
+
+        <p>
+            <b>Status</b>
+            <span class="status">In Progress</span>
+        </p>
+
+        <button class="download-btn"
+        onclick="certificateMsg()">
+            Download Certificate
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#128276;</div>
+                <h3>Notice Board</h3>
+            </div>
+        </div>
+
+        <ul class="notice-list" id="noticeList"></ul>
+    </div>
+
+    <div class="card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <div class="card-icon">&#9742;</div>
+                <h3>Academy Contact</h3>
+            </div>
+        </div>
+
+        <p class="contact-line">
+            <b>Vandana Mam</b><br>
+            9329445940
+        </p>
+
+        <p class="contact-line">
+            <b>Soundarya Parlour Barud</b><br>
+            9926840998
+        </p>
+
+        <p class="contact-line">
+            <b>Email</b><br>
+            soundaryastore@gmail.com
+        </p>
+    </div>
+
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel" class="admin-panel">
-<h3>Admin Panel</h3>
-
-<h4>Add Product</h4>
-<input id="pTitle" placeholder="Title">
-<input id="pPrice" placeholder="Price">
-<input id="pMRP" placeholder="MRP">
-<textarea id="pDesc" placeholder="Description"></textarea>
-<input id="pImg1" placeholder="Image Link">
-<button onclick="saveProduct()">Save Product</button>
-
-<hr>
-
-<h4>Add Student</h4>
-<input id="sID" placeholder="Student ID">
-<input id="sName" placeholder="Name">
-<input id="sMobile" placeholder="Mobile">
-<input id="sCourse" placeholder="Course">
-<input id="sTotal" placeholder="Total Fees">
-<input id="sPaid" placeholder="Fees Paid">
-<input id="sCert" placeholder="Certificate Link">
-<input id="sNotes" placeholder="Notes Link">
-<input id="sYT" placeholder="YouTube Course">
-<input id="sPass" placeholder="Password">
-<button onclick="saveStudent()">Save Student</button>
-
-<button onclick="hideAdmin()">Close</button>
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, getDoc, setDoc, addDoc }
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+<footer>
+&copy; 2026 Soundarya Beauty Academy | By Svapra.com
+</footer>
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAqLAI7c-yqMeAyNZFh75KU5NKA5sSh800",
-  authDomain: "store-12869.firebaseapp.com",
-  projectId: "store-12869"
+</div>
+
+<script>
+
+const notices = [
+    { date: "15 July 2026", text: "Bridal Makeup workshop on 25th July - all students must attend." },
+    { date: "01 July 2026", text: "2nd installment due by 10th of every month, please pay on time." },
+    { date: "20 June 2026", text: "Academy will remain closed on 29th June for a local festival." }
+];
+
+const students = {
+
+    "SBP1001": {
+        pass: "9039540706",
+        name: "Muskan Dawane",
+        mobile: "9039540706",
+        startDate: "06-05-2026",
+        address: "Barud Tanda Dist Khargone",
+        course: "Full Parlour Course",
+        totalFees: 8000,
+        firstInstallment: "10-05-2026 | ₹3,000 (Online)",
+        secondInstallment: "11-06-2026 | ₹2,000 (Online)",
+        thirdInstallment: "14-07-2026 | ₹2,000 (Online)",
+        nextInstallment: "30 July 2026",
+        remaining: 1000,
+        batchTiming: "12:00 PM - 3:00 PM",
+        attendance: 92,
+        paymentHistory: [
+            { date: "10-05-2026", amount: "₹3,000", mode: "Online" },
+            { date: "11-06-2026", amount: "₹2,000", mode: "Online" },
+            { date: "14-07-2026", amount: "₹2,000", mode: "Online" }
+        ],
+        modules: [
+            { name: "Basic Skin Care & Facial", done: true },
+            { name: "Threading & Waxing", done: true },
+            { name: "Hair Styling Basics", done: true },
+            { name: "Bridal Makeup", done: true },
+            { name: "Advanced Makeup & HD", done: false },
+            { name: "Nail Art & Manicure", done: false }
+        ]
+    },
+
+    "SBP1002": {
+        pass: "9926939255",
+        name: "Mamta Dawane",
+        mobile: "9926939255",
+        startDate: "06-05-2026",
+        address: "Barud Tanda Dist Khargone",
+        course: "Full Parlour Course",
+        totalFees: 8000,
+        firstInstallment: "10-05-2026 | ₹2,000 (Cash)",
+        secondInstallment: "10-06-2026 | ₹2,500 (Online)",
+        thirdInstallment: "09-07-2026 | ₹2,000 (Online)",
+        nextInstallment: "30 July 2026",
+        remaining: 1500,
+        batchTiming: "12:00 PM - 3:00 PM",
+        attendance: 85,
+        paymentHistory: [
+            { date: "10-05-2026", amount: "₹2,000", mode: "Cash" },
+            { date: "10-06-2026", amount: "₹2,500", mode: "Online" },
+            { date: "09-07-2026", amount: "₹2,000", mode: "Online" }
+        ],
+        modules: [
+            { name: "Basic Skin Care & Facial", done: true },
+            { name: "Threading & Waxing", done: true },
+            { name: "Hair Styling Basics", done: true },
+            { name: "Bridal Makeup", done: true },
+            { name: "Advanced Makeup & HD", done: false },
+            { name: "Nail Art & Manicure", done: false }
+        ]
+    }
+
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+function login(){
 
-window.showSection = (id)=>{
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-};
+    const id = document.getElementById("studentId").value.trim();
+    const pass = document.getElementById("mobile").value.trim();
 
-window.adminLogin = ()=>{
-  const pass = prompt("Enter Password");
-  if(pass==="8430"){
-    document.getElementById("adminPanel").style.display="block";
-  }
-};
+    if(students[id] && students[id].pass === pass){
 
-window.hideAdmin = ()=>{
-  document.getElementById("adminPanel").style.display="none";
-};
+        const s = students[id];
 
-async function loadProducts(){
-  const snap = await getDocs(collection(db,"products"));
-  const container = document.getElementById("productsContainer");
-  container.innerHTML="";
-  snap.forEach(docSnap=>{
-    const d = docSnap.data();
-    container.innerHTML+=`
-      <div class="card" onclick="openProduct('${docSnap.id}')">
-        <img src="${d.images ? d.images[0] : ''}">
-        <h4>${d.title}</h4>
-        <p>₹${d.price}</p>
-      </div>
-    `;
-  });
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+
+        document.getElementById("studentName").innerText = s.name;
+        document.getElementById("welcomeName").innerText = s.name;
+
+        document.getElementById("name").innerText = s.name;
+        document.getElementById("sid").innerText = id;
+        document.getElementById("phone").innerText = s.mobile;
+        document.getElementById("startDate").innerText = s.startDate;
+        document.getElementById("address").innerText = s.address;
+        document.getElementById("course").innerText = s.course;
+        document.getElementById("totalFees").innerText = s.totalFees;
+        document.getElementById("firstInstallment").innerText = s.firstInstallment;
+        document.getElementById("secondInstallment").innerText = s.secondInstallment;
+        document.getElementById("thirdInstallment").innerText = s.thirdInstallment;
+        document.getElementById("nextInstallment").innerText = s.nextInstallment;
+        document.getElementById("remaining").innerText = s.remaining;
+
+        // Batch timing & schedule
+        document.getElementById("batchTiming").innerText = s.batchTiming;
+        document.getElementById("schedWeekday").innerText = s.batchTiming;
+
+        // Today's date
+        const today = new Date();
+        document.getElementById("todayDate").innerText = today.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+
+        // Notice strip (latest notice)
+        document.getElementById("topNotice").innerText = notices[0].date + " — " + notices[0].text;
+
+        // Notice board list
+        const noticeList = document.getElementById("noticeList");
+        noticeList.innerHTML = "";
+        notices.forEach(n => {
+            const li = document.createElement("li");
+            li.innerHTML = '<span class="notice-date">' + n.date + '</span><span class="notice-item-text">' + n.text + '</span>';
+            noticeList.appendChild(li);
+        });
+
+        // Attendance
+        document.getElementById("attendancePercent").innerText = s.attendance;
+        document.getElementById("attendanceBar").style.width = s.attendance + "%";
+        const pill = document.getElementById("attendancePill");
+        if(s.attendance >= 85){
+            pill.innerText = "Good";
+            pill.className = "pill good";
+        }else{
+            pill.innerText = "Needs Improvement";
+            pill.className = "pill warn";
+        }
+
+        // Module / curriculum progress
+        const moduleList = document.getElementById("moduleList");
+        moduleList.innerHTML = "";
+        s.modules.forEach(m => {
+            const li = document.createElement("li");
+            if(m.done){ li.classList.add("done-text"); }
+            li.innerHTML = '<span class="module-check ' + (m.done ? "done" : "pending") + '">' + (m.done ? "&#10003;" : "&#9679;") + '</span>' + m.name;
+            moduleList.appendChild(li);
+        });
+
+        // Payment history
+        const paymentBody = document.getElementById("paymentHistoryBody");
+        paymentBody.innerHTML = "";
+        s.paymentHistory.forEach(p => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = '<td>' + p.date + '</td><td>' + p.amount + '</td><td>' + p.mode + '</td>';
+            paymentBody.appendChild(tr);
+        });
+
+    }else{
+
+        alert("Invalid Student ID or Mobile Number");
+
+    }
+
 }
-loadProducts();
 
-window.openProduct = async(id)=>{
-  const snap = await getDoc(doc(db,"products",id));
-  const d = snap.data();
-  document.getElementById("productDetail").innerHTML=`
-    <h3>${d.title}</h3>
-    <p>${d.description}</p>
-    <p><strike>₹${d.mrp}</strike> ₹${d.price}</p>
-  `;
-  document.getElementById("productModal").style.display="flex";
-};
+function logout(){
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("studentId").value = "";
+    document.getElementById("mobile").value = "";
+}
 
-window.closeProduct = ()=>{
-  document.getElementById("productModal").style.display="none";
-};
+function certificateMsg(){
 
-window.saveProduct = async()=>{
-  await addDoc(collection(db,"products"),{
-    title:document.getElementById("pTitle").value,
-    price:document.getElementById("pPrice").value,
-    mrp:document.getElementById("pMRP").value,
-    description:document.getElementById("pDesc").value,
-    images:[document.getElementById("pImg1").value]
-  });
-  alert("Product Saved");
-  loadProducts();
-};
+    alert(
+        "Course Complete Karne Ke Baad Hi Certificate Generate Hoga"
+    );
 
-window.saveStudent = async()=>{
-  await setDoc(doc(db,"students",document.getElementById("sID").value),{
-    name:document.getElementById("sName").value,
-    mobile:document.getElementById("sMobile").value,
-    course:document.getElementById("sCourse").value,
-    totalFees:document.getElementById("sTotal").value,
-    feesPaid:document.getElementById("sPaid").value,
-    certificateLink:document.getElementById("sCert").value,
-    notesLink:document.getElementById("sNotes").value,
-    youtubeCourse:document.getElementById("sYT").value,
-    password:document.getElementById("sPass").value
-  });
-  alert("Student Saved");
-};
+}
 
-window.studentLogin = async()=>{
-  const id = document.getElementById("studentID").value;
-  const pass = document.getElementById("studentPass").value;
-  const snap = await getDoc(doc(db,"students",id));
-  if(!snap.exists()) return alert("Student Not Found");
-  const d = snap.data();
-  if(d.password !== pass) return alert("Wrong Password");
-
-  document.getElementById("studentData").innerHTML=`
-    <h4>${d.name}</h4>
-    <p>${d.mobile}</p>
-    <p>${d.course}</p>
-    <p>Total Fees: ${d.totalFees}</p>
-    <p>Paid: ${d.feesPaid}</p>
-    <a href="${d.certificateLink}" target="_blank">Certificate</a><br>
-    <a href="${d.notesLink}" target="_blank">Notes</a><br>
-    <a href="${d.youtubeCourse}" target="_blank">Online Course</a>
-  `;
-};
 </script>
 
 </body>
